@@ -78,7 +78,7 @@ const Homepage = () => {
 
   useEffect(() => {
     sort_handleDisplayedValue();
-  }, []);
+  });
 
   const h_handlePageChange = (page) => {
     setH_currentPage(page);

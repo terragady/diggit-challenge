@@ -2,7 +2,10 @@ import React from "react";
 
 import HorizontalPagination from "../Pagination/HorizontalPagination/HorizontalPagination";
 import VerticalPagination from "../Pagination/VerticalPagination/VerticalPagination";
-// import TotalSignups from "../../components/TotalSignups/TotalSignups";
+import TotalSignups from "../../components/TotalSignups/TotalSignups";
+import IndividualsChart from "../../components/Chart/IndividualsChart";
+import CompaniesChart from "../../components/Chart/CompaniesChart";
+
 import GenderSort from "../GenderSort/GenderSort";
 import Meetings from "../Meetings/Meetings";
 
@@ -57,6 +60,8 @@ const MainBoard = ({
     { id: 1, name: "Individuals" },
     { id: 2, name: "Companies" },
   ];
+  console.log(doughnut)
+  console.log(individuals)
 
   return (
     <div className={styles.wrapper}>
@@ -79,16 +84,23 @@ const MainBoard = ({
           <div className={styles.display}>
             <div className={styles.displayCharts}>
               <div className={styles.upperChart}>
-                {/* Individuals Chart */}
-                {/* Required data: individuals */}
+                <IndividualsChart
+                  data={individuals.data}
+                  labels={individuals.labels}
+                />
               </div>
               <div className={styles.lowerChart}>
-                {/* Companies Chart */}
-                {/* Required data: companies */}
+                <CompaniesChart
+                  data={companies.data}
+                  labels={companies.labels}
+                />
               </div>
             </div>
             <div className={styles.displayInfo}>
-
+              <TotalSignups
+                doughnut={doughnut}
+                onDoughnutLenght={onDoughnutLenght}
+              />
               <div className={styles.sort}>
                 <GenderSort
                   selectGender={sort_select_gender}
